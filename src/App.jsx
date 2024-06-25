@@ -1,22 +1,19 @@
 // DO NOT DELETE
 
 import './App.css'
+import { Header } from './Header'
+import { Description } from './Description'
 
 /**
  * @type {() => JSX.Element}
  */
+
 export const App = () => {
   return (
     <div>
-      <header>
-        <h1>Dogアプリ</h1>
-      </header>
+      <Header />
       <main>
-        <p>犬の画像を表示するサイトです</p>
-        <img
-          src="https://images.dog.ceo/breeds/dingo/n02115641_13605.jpg"
-          alt="犬の画像"
-        />
+        <Description />
       </main>
     </div>
   )
