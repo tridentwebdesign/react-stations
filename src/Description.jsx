@@ -1,7 +1,5 @@
 // @ts-check
-import { DogImage } from './DogImage'
-console.log(DogImage())
-
+import DogImage from './DogImage'
 import { useState } from 'react'
 
 export const Description = () => {
@@ -21,7 +19,7 @@ export const Description = () => {
     <>
       <button onClick={getDogImage}>画像更新</button>
       <p>犬の画像を表示するサイトです</p>
-      <img src={dogUrl} alt="犬の画像" />
+      <DogImage src={dogUrl} alt="犬の画像" />
     </>
   )
 }

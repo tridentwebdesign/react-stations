@@ -1,14 +1,7 @@
 // @ts-check
 
-export const DogImage = () => {
-  function getDogImage() {
-    fetch('https://dog.ceo/api/breeds/image/random')
-      .then(response => response.json())
-      .then(data => {
-        return data.message
-      })
-  }
-  return getDogImage
+const DogImage = ({ src, alt }) => {
+  return <img src={src} alt={alt} style={{ width: '100%', height: 'auto' }} />
 }
 
 export default DogImage
