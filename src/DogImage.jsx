@@ -1,7 +1,7 @@
-// @ts-check
-
-const DogImage = ({ src, alt }) => {
-  return <img src={src} alt={alt} style={{ width: '100%', height: 'auto' }} />
+export const DogImage = ({ imageUrl }) => {
+  return (
+    <div className="dog-image-container">
+      <img src={imageUrl} alt="Random dog" />
+    </div>
+  )
 }
-
-export default DogImage
