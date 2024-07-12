@@ -6,18 +6,25 @@ export const DogListContainer = () => {
     'https://images.dog.ceo/breeds/dingo/n02115641_13605.jpg',
   )
 
-  const getDogImage = () => {
+  // useEffectとFetch関数を使って犬種一覧を取得し、用意したstateに格納する。
+  //初回マウント後にfetch関数を使って犬種一覧を取得し、stateを更新する。
+  useEffect(() => {
     fetch('https://dog.ceo/api/breeds/list/all')
       .then(response => response.json())
       .then(data => {
         setBreeds(data.message)
       })
-  }
+  }, [])
 
+  // 画面に犬種一覧を表示する。
   return (
-    <div className="description">
-      <button onClick={getDogImage}>画像更新</button>
-      <p>犬の画像を表示するサイトです</p>
+    <div>
+      <h2>犬種一覧</h2>
+      <ul>
+        {Object.keys(breeds).map(breed => (
+          <li key={breed}>{breed}</li>
+        ))}
+      </ul>
     </div>
   )
 }
