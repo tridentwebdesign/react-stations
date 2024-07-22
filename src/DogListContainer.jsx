@@ -1,30 +1,30 @@
-// @ts-check
-import { useEffect, useState } from 'react'
+// DogListContainer.jsx
+import React, { useEffect, useState } from 'react'
+import BreedsSelect from './BreedsSelect'
 
 export const DogListContainer = () => {
-  const [breeds, setBreeds] = useState(
-    'https://images.dog.ceo/breeds/dingo/n02115641_13605.jpg',
-  )
+  const [breeds, setBreeds] = useState([])
+  const [selectedBreed, setSelectedBreed] = useState('') // selectedBreedとsetSelectedBreedを定義
 
-  // useEffectとFetch関数を使って犬種一覧を取得し、用意したstateに格納する。
-  //初回マウント後にfetch関数を使って犬種一覧を取得し、stateを更新する。
   useEffect(() => {
     fetch('https://dog.ceo/api/breeds/list/all')
       .then(response => response.json())
       .then(data => {
-        setBreeds(data.message)
+        setBreeds(Object.keys(data.message))
       })
   }, [])
 
-  // 画面に犬種一覧を表示する。
+  const handleBreedChange = breed => {
+    setSelectedBreed(breed) // 選択した犬種を更新
+  }
+
   return (
     <div>
-      <h2>犬種一覧</h2>
-      <ul>
-        {Object.keys(breeds).map(breed => (
-          <li key={breed}>{breed}</li>
-        ))}
-      </ul>
+      <BreedsSelect
+        breeds={breeds}
+        selectedBreed={selectedBreed}
+        onBreedChange={handleBreedChange}
+      />
     </div>
   )
 }
