@@ -1,7 +1,7 @@
 // BreedsSelect.js
 import React from 'react'
 
-const BreedsSelect = ({ breeds, selectedBreed, onBreedChange }) => {
+export const BreedsSelect = ({ breeds, selectedBreed, onBreedChange }) => {
   return (
     <select value={selectedBreed} onChange={e => onBreedChange(e.target.value)}>
       <option value="">犬種を選択してください</option>
@@ -13,5 +13,3 @@ const BreedsSelect = ({ breeds, selectedBreed, onBreedChange }) => {
     </select>
   )
 }
-
-export default BreedsSelect
